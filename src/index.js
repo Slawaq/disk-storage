@@ -68,6 +68,8 @@ const getOrCreateCursor = async () => {
 }
 
 const getDataFiles = async () => {
+  await mkdirp(dataFolder)
+
   let cursor = await getOrCreateCursor()
 
   let from = cursor.timestamp
