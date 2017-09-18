@@ -16,7 +16,7 @@ const defaultDataFolder = path.join(__dirname, 'data')
 const dataFolder = process.env.DATA_FOLDER || (() => { console.log(`Warning! Env variable 'DATA_FOLDER' is not defined, ${defaultDataFolder} is using as data folder.`); return defaultDataFolder })()
 const cursorFilename = 'cursor'
 const cursorPath = path.join(dataFolder, cursorFilename)
-const fromDate = Date.UTC(2016, 0)
+const fromDate = Date.UTC(2017, 0)
 const hourInMs = 60 * 60 * 1000
 const readBufferSize = 128 * 1024
 const readParallelism = 4
