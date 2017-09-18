@@ -1,0 +1,26 @@
+{
+  "name": "disk-storage",
+  "version": "1.0.0",
+  "description": "Efficient disk storage",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Slawaq/disk-storage.git"
+  },
+  "keywords": [
+    "disk",
+    "storage",
+    "logs",
+    "persist"
+  ],
+  "author": "Slawaq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Slawaq/disk-storage/issues"
+  },
+  "homepage": "https://github.com/Slawaq/disk-storage#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "mkdirp": "^0.5.1"
+  }
+}
