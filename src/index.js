@@ -12,9 +12,10 @@ const mkdirp = Promise.promisify(require('mkdirp'))
 const appendFile = Promise.promisify(fs.appendFile)
 const isNotAccessible = Promise.promisify((path, cb) => fs.access(path, fs.constants.R_OK | fs.constants.W_OK, (err) => cb(null, err)))
 
-const dataDir = process.env.DATA_DIR || path.join(__dirname, '..', '..', '..', 'build')
+const defaultDataFolder = path.join(__dirname, 'data')
+const dataFolder = process.env.DATA_FOLDER || (() => { console.log(`Warning! Env variable 'DATA_FOLDER' is not defined, ${defaultDataFolder} is using as data folder.`); return defaultDataFolder })()
 const cursorFilename = 'cursor'
-const cursorPath = path.join(dataDir, cursorFilename)
+const cursorPath = path.join(dataFolder, cursorFilename)
 const fromDate = Date.UTC(2016, 0)
 const hourInMs = 60 * 60 * 1000
 const readBufferSize = 128 * 1024
@@ -23,7 +24,7 @@ const lineBatchSize = 1000
 const logAboutMissingDataLog = false
 
 const getDataFolder = date => path.join(...[
-  dataDir,
+  dataFolder,
   date.getUTCFullYear().toString(),
   (date.getUTCMonth() + 1).toString().padStart(2, '0'),
   date.getUTCDate().toString().padStart(2, '0')
