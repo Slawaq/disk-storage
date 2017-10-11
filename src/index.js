@@ -57,8 +57,12 @@ const readNewData = pubSub => async () => {
 module.exports = {
   reader: () => {
     let pubSub = createPubSub()
+    let reader = readNewData(pubSub)
 
-    setInterval(readNewData(pubSub), 5000)
+    setTimeout(async function ReadAndRead (params) {
+      await reader()
+      setTimeout(ReadAndRead, 5000)
+    }, 5000)
 
     return pubSub
   },
